@@ -1,17 +1,45 @@
-let count = 0;
+var $currentNumberWrapper = document.getElementById('currentNumber');
+var $currentNumber = document.querySelector('#currentNumber')
+var $increment = document.querySelector('#increment')
+var $decrement = document.querySelector('#decrement')
+var currentNumber = 0;
 
-const CURRENT_NUMBER = document.getElementById('currentNumber');
+function increment(){
+    if(currentNumber >= 10) return 
 
-function increment() {
-	count++;
-	CURRENT_NUMBER.innerHTML = count;
+    currentNumber = currentNumber + 1;
+    $currentNumberWrapper.innerHTML = currentNumber;
+    
+    checkNegativeNumber()
+    toggleActions()
 }
 
-function decrement() {
-	count--;
-	CURRENT_NUMBER.innerHTML = count;
+function decrement(){
+    if(currentNumber <= 0) return 
+
+    currentNumber = currentNumber -1;
+    $currentNumberWrapper.innerHTML = currentNumber;
+
+    checkNegativeNumber()
+    toggleActions()
 }
 
-function test() {
-	kdowkdpo;
+function checkNegativeNumber(){
+    if(currentNumber < 0)
+        $currentNumber.style.color = "red"
+    else
+        $currentNumber.style.color = ''
 }
+
+function toggleActions(){
+    if(currentNumber >= 10) $increment.classList.add('disable')
+    else $increment.classList.remove('disable')
+
+    if(currentNumber <= 0) $decrement.classList.add('disable')
+    else $decrement.classList.remove('disable')
+}
+
+$increment.addEventListener('click', increment);
+$decrement.addEventListener('click', decrement);
+
+

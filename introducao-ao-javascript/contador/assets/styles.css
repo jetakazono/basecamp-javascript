@@ -34,3 +34,8 @@ button {
     margin: 0 20px;
     font-size: 16pt;
 }
+
+.disable{
+    opacity: 0.3;
+    pointer-events: none;
+}
