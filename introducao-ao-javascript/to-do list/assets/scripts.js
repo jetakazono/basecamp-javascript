@@ -1,29 +1,41 @@
-const form = document.getElementById('task-form');
-const taskList = document.getElementById('tasks');
+window.addEventListener('load', () =>{
+    const $form = document.querySelector('#new-task-form');
+    const $input = document.querySelector('#new-task-input');
+    const $list_el = document.querySelector('#tasks');
+   
 
-form.onsubmit = function (e) {
-	e.preventDefault();
-	const inputField = document.getElementById('task-input');
-	addTask(inputField.value);
-	form.reset();
-};
+    $form.addEventListener('submit', (e) =>{
+        e.preventDefault();
 
-function addTask(description) {
-	const taskContainer = document.createElement('div');
-	const newTask = document.createElement('input');
-	const taskLabel = document.createElement('label');
-	const taskDescriptionNode = document.createTextNode(description);
+        const task = $input.value;
+        if(!task){
+            alert("Please fill out the task!");
+            return
+        }else{
+            addNewTask(task);
+            $form.reset();
+        }
+    })
 
-	newTask.setAttribute('type', 'checkbox');
-	newTask.setAttribute('name', description);
-	newTask.setAttribute('id', description);
+    function addNewTask(task)
+    {
+        const taskLi = document.createElement('li');
+        const newTask = document.createElement('input');
+        const taskLabel = document.createElement('label');
+        const taskNode = document.createTextNode(task);
 
-	taskLabel.setAttribute('for', description);
-	taskLabel.appendChild(taskDescriptionNode);
+        newTask.setAttribute('type', 'checkbox');
+        newTask.setAttribute('name', task);
+        newTask.setAttribute('id', task);
 
-	taskContainer.classList.add('task-item');
-	taskContainer.appendChild(newTask);
-	taskContainer.appendChild(taskLabel);
+        taskLabel.setAttribute('for', task);
+        taskLabel.appendChild(taskNode);
 
-	taskList.appendChild(taskContainer);
-}
+        taskLi.classList.add('task-item');
+        taskLi.appendChild(newTask);
+        taskLi.appendChild(taskLabel);
+
+        $list_el.appendChild(taskLi);
+    }
+
+})  

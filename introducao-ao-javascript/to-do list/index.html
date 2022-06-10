@@ -7,14 +7,14 @@
     <title>To-do list</title>
 </head>
 <body>
-    <h1>To-do list</h1>
-    <div id="list">
-        <form id="task-form">
-            <input id="task-input" name="tarefa" type="text" placeholder="Digite aqui sua tarefa" />
-            <button type="submit">Adicionar</button>
+    <main>
+        <h1>TO-DO List</h1>
+        <form id="new-task-form">
+            <input type="text" id="new-task-input"  placeholder="What do you have planned?" class="input">
+            <input type="submit"  id="new-task-submit" value="Add task" class="button">
         </form>
-        <div id="tasks"></div>
-    </div>
+        <ul id="tasks" class="list-task"></ul>
+    </main>
     <script src="assets/scripts.js"></script>
 </body>
 </html>
